@@ -77,7 +77,7 @@ echo 'source /usr/local/go/src/github.com/tomnomnom/gf/gf-completion.bash' >> ~/
 git clone https://github.com/blechschmidt/massdns.git $dir/masscan
 make -C $dir/masscan
 
-cp $dir/masscan /bin
+cp $dir/masscan/bin/masscan /bin
 
 
 echo "

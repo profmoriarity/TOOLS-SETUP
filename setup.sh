@@ -63,7 +63,8 @@ git clone https://github.com/defparam/smuggler $dir/smuggler;
 GO111MODULE=on go get -u -v github.com/projectdiscovery/shuffledns/cmd/shuffledns;
 GO111MODULE=on go get -u -v github.com/projectdiscovery/dnsx/cmd/dnsx
 GO111MODULE=on go get -u -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
-
+git clone https://github.com/vortexau/dnsvalidator.git $dir/dnsvalidator;
+python3 $dir/dnsvalidator/setup.py install;
 git clone https://github.com/p4pentest/crtsh $dir/crtsh;
 git clone https://github.com/secdec/xssmap $dir/xssmap;
 git clone https://github.com/rastating/wordpress-exploit-framework $dir/wordpress-exploit-framework;

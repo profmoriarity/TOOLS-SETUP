@@ -17,16 +17,18 @@ pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n
 sudo apt-get install ruby;
 sudo apt-get install screen;
 sudo apt-get install git;
-
+sudo apt  install awscli -y;
+sudo apt install masscan -y;
 mkdir /root/.gf
 mkdir /root/Tools;
 mkdir /root/Recon;
 dir=/root/Tools;
 
-
+aws s3 sync s3://assetnote-wordlists/data/ $dir/assetnote-wordlists --no-sign-request;
 go get github.com/Ice3man543/SubOver;
 git clone https://github.com/aboul3la/Sublist3r.git $dir/Sublister;
 git clone https://github.com/tomnomnom/gf $dir/gf;
+git clone https://github.com/danielmiessler/SecLists.git $dir/seclists;
 go get -u github.com/tomnomnom/assetfinder;
 go get -u github.com/tomnomnom/fff;
 go get github.com/tomnomnom/hacks/filter-resolved;
@@ -59,6 +61,9 @@ git clone https://github.com/maurosoria/dirsearch $dir/dirsearch;
 git clone https://github.com/dwisiswant0/apkleaks $dir/apkleaks;
 git clone https://github.com/defparam/smuggler $dir/smuggler;
 GO111MODULE=on go get -u -v github.com/projectdiscovery/shuffledns/cmd/shuffledns;
+GO111MODULE=on go get -u -v github.com/projectdiscovery/dnsx/cmd/dnsx
+GO111MODULE=on go get -u -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
+
 git clone https://github.com/p4pentest/crtsh $dir/crtsh;
 git clone https://github.com/secdec/xssmap $dir/xssmap;
 git clone https://github.com/rastating/wordpress-exploit-framework $dir/wordpress-exploit-framework;
@@ -68,6 +73,11 @@ rm -rf /root/Gf-Patterns;
 wget https://raw.githubusercontent.com/devanshbatham/ParamSpider/master/gf_profiles/potential.json;
 mv /root/potential.json /root/.gf/;
 echo 'source /usr/local/go/src/github.com/tomnomnom/gf/gf-completion.bash' >> ~/.bashrc;
+
+git clone https://github.com/blechschmidt/massdns.git $dir/masscan
+make -C $dir/masscan
+
+cp $dir/masscan /bin
 
 
 echo "
@@ -88,3 +98,5 @@ alias sprofile='source ~/.bash_profile'
 
 echo "Configure subfinder /root/.config/subfinder/config.yaml"
 echo "Add source ~/.bash_profile in .bashrc file"
+
+source /root/.bash_profile
